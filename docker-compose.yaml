@@ -3,7 +3,8 @@ version: '3.8'
 services:
   jenkins:
     container_name: jenkins
-    build: ./jenkins
+    image: jenkins/jenkins:2.391
+    user: jenkins
     expose:
       - 8080
     ports:

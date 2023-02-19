@@ -2,7 +2,6 @@
 
 # config
 !/jenkins/plugins.txt
-!/jenkins/Dockerfile
 
 # jobs
 !/jenkins/jobs/
