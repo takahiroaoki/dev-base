@@ -3,11 +3,13 @@ version: '3.8'
 services:
   jenkins:
     container_name: jenkins
-    image: jenkins/jenkins:2.391
-    user: jenkins
+    build:
+      context: ./docker/jenkins
     expose:
       - 8080
     ports:
       - 8080:8080
     volumes:
       - ./jenkins:/var/jenkins_home
+      # For docker outside of docker
+      - /var/run/docker.sock:/var/run/docker.sock
