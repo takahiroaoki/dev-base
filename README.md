@@ -15,7 +15,7 @@ $ docker-compose up -d
 5. Make admin user and set the url of jenkins(if you deploy the jenkins server on some location other than localhost).
 6. Execute the following command.
 ```
-# At the project root
+# At the project root, get into the container.
 $ docker-compose exec jenkins /bin/bash
 
 # Install the plugins written in plugins.txt
@@ -23,4 +23,9 @@ $ jenkins-plugin-cli --plugin-file /var/jenkins_home/plugins.txt
 
 # Check whether the plugins would be installed.
 $ jenkins-plugin-cli --list
+
+$ exit
+
+# At the project root
+$ docker-compose restart
 ```
