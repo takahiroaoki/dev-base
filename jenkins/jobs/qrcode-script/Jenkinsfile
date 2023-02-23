@@ -15,8 +15,10 @@ pipeline {
     stages {
         stage('git-clone') {
             steps {
-                git clone "https://github.com/takahiroaoki/qrcode-script.git"
-                cd ./qrcode-script
+                sh """
+                    git clone https://github.com/takahiroaoki/qrcode-script.git
+                    cd ./qrcode-script
+                """
             }
         }
         stage('build') {
