@@ -23,7 +23,9 @@ pipeline {
         }
         stage('build') {
             steps {
-                docker-compose run --rm -e TEXT="${TEXT}" -e FILE_NAME="${FILE_NAME}" qrcode
+                sh """
+                    docker-compose run --rm -e TEXT="${TEXT}" -e FILE_NAME="${FILE_NAME}" qrcode
+                """
             }
         }
     }
