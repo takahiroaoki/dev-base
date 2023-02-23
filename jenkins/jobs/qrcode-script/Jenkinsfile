@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image: "python:3.9.13"
+        }
+    }
     parameters {
         string(
             name: "TEXT",
@@ -13,7 +17,7 @@ pipeline {
         )
     }
     stages {
-        stage('git-clone') {
+        stage("git-clone") {
             steps {
                 sh """
                     if [ -d ./qrcode-script ]; then
@@ -26,10 +30,17 @@ pipeline {
                 """
             }
         }
-        stage('build') {
+        stage("install-package") {
             steps {
                 sh """
-                    docker-compose run --rm -e TEXT="${TEXT}" -e FILE_NAME="${FILE_NAME}" qrcode
+                    pip install qrcode[pil]==7.3.1
+                """
+            }
+        }
+        stage("build") {
+            steps {
+                sh """
+                    python /app/src/make_qrcode.py
                 """
             }
         }
