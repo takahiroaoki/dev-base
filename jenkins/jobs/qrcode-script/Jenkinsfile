@@ -18,6 +18,7 @@ pipeline {
                 sh """
                     if [ -d ./qrcode-script ]; then
                         cd ./qrcode-script
+                        pwd
                         git pull
                     else
                         git clone https://github.com/takahiroaoki/qrcode-script.git
