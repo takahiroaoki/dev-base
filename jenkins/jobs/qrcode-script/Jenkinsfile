@@ -16,14 +16,13 @@ pipeline {
         stage('git-clone') {
             steps {
                 git clone "https://github.com/takahiroaoki/qrcode-script.git"
+                cd ./qrcode-script
             }
         }
         stage('build') {
             steps {
-                cd ./qrcode-script
                 docker-compose run --rm -e TEXT="${TEXT}" -e FILE_NAME="${FILE_NAME}" qrcode
             }
         }
     }
-
 }
