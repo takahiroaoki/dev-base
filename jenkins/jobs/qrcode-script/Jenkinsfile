@@ -3,12 +3,10 @@ pipeline {
     parameters {
         string(
             name: "TEXT",
-            description: "The text which you want to convert into QR-code.",
             defaultValue: "http://localhost:8080/",
         )
         string(
             name: "FILE_NAME"
-            description: "The file name of output QR code: ${FILE_NAME}.png."
             defaultValue: "output"
         )
     }
