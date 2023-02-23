@@ -1,0 +1,28 @@
+pipeline {
+    agent docker
+    parameters {
+        string(
+            name: "TEXT",
+            description: "The text which you want to convert into QR-code.",
+            defaultValue: "http://localhost:8080/",
+        )
+        string(
+            name: "FILE_NAME"
+            description: "The file name of output QR code: ${FILE_NAME}.png."
+            defaultValue: "output"
+        )
+    }
+    stages {
+        stage('git-clone') {
+            steps {
+                git clone "https://github.com/takahiroaoki/qrcode-script.git"
+            }
+        }
+        stage('build') {
+            steps {
+                docker-compose run --rm -e TEXT="${TEXT}" -e FILE_NAME="${FILE_NAME}" qrcode
+            }
+        }
+    }
+
+}
