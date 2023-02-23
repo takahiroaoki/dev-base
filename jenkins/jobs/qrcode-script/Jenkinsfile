@@ -34,6 +34,8 @@ pipeline {
                 sh """
                     cd ./qrcode-script/app
                     pip install qrcode[pil]==7.3.1
+                    export TEXT=${TEXT}
+                    export FILE_NAME=${FILE_NAME}
                     python ./src/make_qrcode.py
                 """
             }
