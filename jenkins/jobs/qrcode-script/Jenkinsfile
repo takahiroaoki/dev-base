@@ -16,8 +16,13 @@ pipeline {
         stage('git-clone') {
             steps {
                 sh """
-                    git clone https://github.com/takahiroaoki/qrcode-script.git
-                    cd ./qrcode-script
+                    if [ -d ./qrcode-script ]; then
+                        cd ./qrcode-script
+                        git pull
+                    else
+                        git clone https://github.com/takahiroaoki/qrcode-script.git
+                        cd ./qrcode-script
+                    fi
                 """
             }
         }
