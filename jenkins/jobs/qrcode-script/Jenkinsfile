@@ -17,12 +17,9 @@ pipeline {
             steps {
                 sh """
                     if [ -d ./qrcode-script ]; then
-                        cd ./qrcode-script
-                        pwd
                         git pull
                     else
                         git clone https://github.com/takahiroaoki/qrcode-script.git
-                        cd ./qrcode-script
                     fi
                 """
             }
@@ -30,7 +27,7 @@ pipeline {
         stage("build") {
             steps {
                 sh """
-                    pwd
+                    cd ./qrcode-script
                     docker-compose run --rm -e TEXT="${TEXT}" -e FILE_NAME="${FILE_NAME}" qrcode
                 """
             }
