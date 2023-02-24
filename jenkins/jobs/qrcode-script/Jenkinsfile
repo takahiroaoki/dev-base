@@ -36,7 +36,11 @@ pipeline {
                     pip install qrcode[pil]==7.3.1
                     python ./src/make_qrcode.py
                 """
-                archiveArtifacts artifacts: './output/${FILE_NAME}.png', followSymlinks: false, onlyIfSuccessful: true
+            }
+        }
+        stage("save") {
+            steps {
+                archiveArtifacts artifacts: '${WORKSPACE}/qrcode-script/app/output/${FILE_NAME}.png', followSymlinks: false, onlyIfSuccessful: true
             }
         }
     }
