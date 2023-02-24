@@ -42,7 +42,7 @@ pipeline {
                     echo "========== Build Finished =========="
                 }
                 success {
-                    archiveArtifacts artifacts: "${WORKSPACE}/qrcode-script/app/output/${FILE_NAME}.png"
+                    archiveArtifacts artifacts: "qrcode-script/app/output/${FILE_NAME}.png"
                     echo "========== The pipeline has executed successfully. =========="
                 }
                 failure {
