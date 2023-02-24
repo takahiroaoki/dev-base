@@ -12,7 +12,10 @@
       <options/>
     </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
   </actions>
-  <description></description>
+  <description>This pipeline would convert a text into a QR-code, using qrcode-scirpt.&#xd;
+ref.) https://github.com/takahiroaoki/qrcode-script&#xd;
+&#xd;
+The output file is here.↓</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <hudson.model.ParametersDefinitionProperty>
@@ -25,7 +28,7 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>FILE_NAME</name>
-          <description>The file name of output QR code: output.png.</description>
+          <description>The file name of output QR code: amazon_link.png.</description>
           <defaultValue>output</defaultValue>
           <trim>false</trim>
         </hudson.model.StringParameterDefinition>
