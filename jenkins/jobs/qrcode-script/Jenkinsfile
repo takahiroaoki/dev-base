@@ -40,6 +40,8 @@ pipeline {
         }
         stage("save") {
             steps {
+                echo ${WORKSPACE}
+                echo ${FILE_NAME}
                 archiveArtifacts artifacts: '${WORKSPACE}/qrcode-script/app/output/${FILE_NAME}.png', followSymlinks: false, onlyIfSuccessful: true
             }
         }
