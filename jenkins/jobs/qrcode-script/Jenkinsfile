@@ -37,13 +37,19 @@ pipeline {
                     python ./src/make_qrcode.py
                 """
             }
-        }
-        stage("save") {
-            steps {
-                archiveArtifacts {
-                    artifacts: "${WORKSPACE}/qrcode-script/app/output/${FILE_NAME}.png",
-                    followSymlinks: false,
-                    onlyIfSuccessful: true
+            post {
+                always {
+                    echo "========== Build Finished =========="
+                }
+                success {
+                    archiveArtifacts artifacts: "${WORKSPACE}/qrcode-script/app/output/${FILE_NAME}.png"
+                    echo "========== The pipeline has executed successfully. =========="
+                }
+                failure {
+                    echo "========== The pipeline has executed in failure. =========="
+                }
+                unstable {
+                    echo "========== The build of pipeline is unstable. =========="
                 }
             }
         }
