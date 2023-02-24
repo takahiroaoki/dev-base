@@ -34,7 +34,7 @@ pipeline {
                 sh """
                     cd ./qrcode-script
                     pip install qrcode[pil]==7.3.1
-                    pwd
+                    python ./app/src/make_qrcode.py
                 """
             }
         }
